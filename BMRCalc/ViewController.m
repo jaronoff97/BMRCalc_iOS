@@ -10,7 +10,7 @@
 #import "Subject.h"
 
 
-static BOOL isMetric=YES;
+static BOOL isImperial=YES;
 
 NSNumber* centimetersToInches(NSNumber* centimeters){
     float cm = centimeters.floatValue;
@@ -60,25 +60,25 @@ NSNumber* kilogramsToPounds(NSNumber* kilograms){
 - (IBAction)goButtonPressed:(id)sender {
     NSNumber* heightNumber;
     NSNumber* weightNumber;
-    if(isMetric==YES){
-       heightNumber = inchesToCentimeters([NSNumber numberWithFloat: self.heightField.text.floatValue]);
+    if(isImperial==YES){
+       heightNumber = inchesToCentimeters([NSNumber numberWithFloat: self.heightField.text.floatValue]);//if it's imperial then convert it to centimeters and kilograms
         weightNumber = poundsToKilograms([NSNumber numberWithFloat: self.weightField.text.floatValue]);
     }
     else{
-       heightNumber = ([NSNumber numberWithFloat: (self.heightField.text.floatValue*100)]);
+       heightNumber = ([NSNumber numberWithFloat: (self.heightField.text.floatValue*100)]);//convert meters to centimeters
        weightNumber = ([NSNumber numberWithFloat: self.weightField.text.floatValue]);
     }
     
-    NSNumber* ageNumber = [NSNumber numberWithFloat: self.ageField.text.floatValue];
+    NSNumber* ageNumber = [NSNumber numberWithFloat: self.ageField.text.floatValue];//get the age
     
-    Subject* subject = [Subject sharedSubject];
+    Subject* subject = [Subject sharedSubject];// make a new subject
     subject.heightInCentimeters = heightNumber;
     subject.weightInKilograms = weightNumber;
-    subject.age = ageNumber;
+    subject.age = ageNumber;// construct the subject
     self.bmrLabel.text = [NSString stringWithFormat:@"%@ %@",@"BMR: ",subject.bmr.stringValue];
-    self.bmrLabel.enabled = YES;
+    self.bmrLabel.enabled = YES;//add BMR
     self.bmiLabel.text = [NSString stringWithFormat:@"%@ %@",@"BMI: ",subject.bmi.stringValue];
-    self.bmiLabel.enabled = YES;
+    self.bmiLabel.enabled = YES;//add BMI
     
 }
 
@@ -86,7 +86,7 @@ NSNumber* kilogramsToPounds(NSNumber* kilograms){
     Subject* subject = [Subject sharedSubject];
     if(subject.isMale==YES)
     {
-        subject.isMale=NO;
+        subject.isMale=NO;//get the gender
     }
     else if(subject.isMale==NO){
         subject.isMale=YES;
@@ -94,15 +94,26 @@ NSNumber* kilogramsToPounds(NSNumber* kilograms){
 }
 
 - (IBAction)unitsAction:(id)sender {
-    if(isMetric==NO){
-        isMetric=YES;
+    //get the unit system
+    if(isImperial==NO){
+        isImperial=YES;
         self.weightField.placeholder=@"Weight (lbs)";
         self.heightField.placeholder=@"Height (in)";
     }
-    else if(isMetric==YES){
-        isMetric=NO;
+    else if(isImperial==YES){
+        isImperial=NO;
         self.weightField.placeholder=@"Weight (kg)";
         self.heightField.placeholder=@"Height (m)";
     }
+}
+
+- (IBAction)longHoldGesture:(id)sender {
+    self.weightField.text=@"";
+    self.heightField.text=@"";
+    self.ageField.text=@"";
+    self.bmiLabel.text=@"BMI";
+    self.bmrLabel.text=@"BMR";
+    self.bmiLabel.enabled = NO;
+    self.bmrLabel.enabled = NO;
 }
 @end

@@ -18,6 +18,7 @@
 - (IBAction)goButtonPressed:(id)sender;
 - (IBAction)genderControlAction:(id)sender;
 - (IBAction)unitsAction:(id)sender;
+- (IBAction)longHoldGesture:(id)sender;
 
 
 @end
