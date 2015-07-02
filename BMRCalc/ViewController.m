@@ -75,10 +75,38 @@ NSNumber* kilogramsToPounds(NSNumber* kilograms){
     subject.heightInCentimeters = heightNumber;
     subject.weightInKilograms = weightNumber;
     subject.age = ageNumber;// construct the subject
-    self.bmrLabel.text = [NSString stringWithFormat:@"%@ %@",@"BMR: ",subject.bmr.stringValue];
+    self.bmrLabel.text = [NSString stringWithFormat:@"%@ %@ %@",@"BMR: ",subject.bmr.stringValue, @" kcal/day"];
     self.bmrLabel.enabled = YES;//add BMR
     self.bmiLabel.text = [NSString stringWithFormat:@"%@ %@",@"BMI: ",subject.bmi.stringValue];
     self.bmiLabel.enabled = YES;//add BMI
+    NSString* toAdd = @"";
+    NSString* weightDifference;
+    
+    if(isImperial==YES){
+        weightDifference=[NSString stringWithFormat: @"You should be around: %@ %@", kilogramsToPounds(subject.suggestedWeight), @"lbs"];
+    }
+    else if(isImperial==NO){
+        weightDifference=[NSString stringWithFormat: @"You should be around: %@ %@", (subject.suggestedWeight), @"lbs"];
+    }
+    
+    if (subject.bmi.floatValue>=0 && subject.bmi.floatValue<=18.4){
+        toAdd= @"Diagonsis: Underweight";
+    }
+    else if (subject.bmi.floatValue>=18.5 && subject.bmi.floatValue<=24.9){
+        toAdd= @"Diagonsis: Normal Weight";
+        weightDifference=@"Great Job!";
+    }
+    else if (subject.bmi.floatValue>=25.0 && subject.bmi.floatValue<=29.9){
+        toAdd= @"Diagonsis: Overweight";
+    }
+    else if (subject.bmi.floatValue>=30 && subject.bmi.floatValue<=39.9){
+        toAdd= @"Diagonsis: Obese";
+    }
+    else if (subject.bmi.floatValue>=40){
+        toAdd= @"Diagonsis: Extreme Obesity";
+    }
+    self.diagnosisLabel.text = [NSString stringWithFormat: @"%@, \n %@", toAdd, weightDifference];
+    self.diagnosisLabel.hidden=NO;
     
 }
 
@@ -119,6 +147,13 @@ NSNumber* kilogramsToPounds(NSNumber* kilograms){
         }
         
     }
+    
+    if([self.weightField.text isEqual:@"0"]){
+        self.weightField.text=@"";
+    }
+    if([self.heightField.text isEqual:@"0"]){
+        self.heightField.text=@"";
+    }
 }
 
 - (IBAction)longHoldGesture:(id)sender {
@@ -129,5 +164,6 @@ NSNumber* kilogramsToPounds(NSNumber* kilograms){
     self.bmrLabel.text=@"BMR";
     self.bmiLabel.enabled = NO;
     self.bmrLabel.enabled = NO;
+    self.diagnosisLabel.hidden = YES;
 }
 @end

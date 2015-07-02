@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *ageField;
 @property (weak, nonatomic) IBOutlet UILabel *bmrLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bmiLabel;
+@property (weak, nonatomic) IBOutlet UILabel *diagnosisLabel;
 
 - (IBAction)goButtonPressed:(id)sender;
 - (IBAction)genderControlAction:(id)sender;

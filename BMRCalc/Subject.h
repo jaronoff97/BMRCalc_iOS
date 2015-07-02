@@ -15,6 +15,7 @@
 @property BOOL isMale;
 @property (readonly) NSNumber* bmr;
 @property (readonly) NSNumber* bmi;
+@property (readonly) NSNumber* suggestedWeight;
 +(Subject*) sharedSubject;
 
 @end

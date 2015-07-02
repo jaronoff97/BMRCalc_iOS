@@ -3,6 +3,7 @@
 //  BMRTest
 //
 //  Created by Michael Shafae on 6/30/15.
+//  Edited by Jacob Aronoff starting 6/31/15.
 //  Copyright (c) 2015 Michael Shafae. All rights reserved.
 //
 
@@ -49,8 +50,24 @@ static Subject* _mySecretSubject; // make a static subject that all classes will
 }
 -(NSNumber*) bmi{
     float heightInMeters = ((self.heightInCentimeters.floatValue)/100);// Convert to meters
-    float weight = ((self.weightInKilograms.floatValue));// get weight as a float
+    float weight = (self.weightInKilograms.floatValue);// get weight as a float
     float bodyMassIndex = weight / (heightInMeters*heightInMeters);
     return [NSNumber numberWithFloat: bodyMassIndex];// return the BMI
 }
+-(NSNumber*) suggestedWeight{
+    float heightInMeters = ((self.heightInCentimeters.floatValue)/100);// Convert to meters
+    float weight = self.weightInKilograms.floatValue;// get weight as a float
+    float bodyMassIndex = weight / (heightInMeters*heightInMeters);
+    while(bodyMassIndex>24.9 || bodyMassIndex<18.5){
+        if(bodyMassIndex>24.9){
+            --weight;
+        }
+        if(bodyMassIndex<18.5){
+            ++weight;
+        }
+        bodyMassIndex = weight / (heightInMeters*heightInMeters);
+    }
+    return [NSNumber numberWithFloat: weight];// return the BMI
+}
+
 @end

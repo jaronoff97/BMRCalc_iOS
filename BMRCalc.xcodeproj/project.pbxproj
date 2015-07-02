@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C409D4B01B45BCA300E6215A /* CustomControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C409D4AF1B45BCA300E6215A /* CustomControllerViewController.m */; };
 		C48D5A351B4435CE00878F20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C48D5A341B4435CE00878F20 /* main.m */; };
 		C48D5A381B4435CE00878F20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C48D5A371B4435CE00878F20 /* AppDelegate.m */; };
 		C48D5A3B1B4435CE00878F20 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48D5A3A1B4435CE00878F20 /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C409D4AE1B45BCA300E6215A /* CustomControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomControllerViewController.h; sourceTree = "<group>"; };
+		C409D4AF1B45BCA300E6215A /* CustomControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomControllerViewController.m; sourceTree = "<group>"; };
 		C48D5A2F1B4435CE00878F20 /* BMRCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMRCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48D5A331B4435CE00878F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C48D5A341B4435CE00878F20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 				C48D5A3F1B4435CE00878F20 /* Images.xcassets */,
 				C48D5A411B4435CE00878F20 /* LaunchScreen.xib */,
 				C48D5A321B4435CE00878F20 /* Supporting Files */,
+				C409D4AE1B45BCA300E6215A /* CustomControllerViewController.h */,
+				C409D4AF1B45BCA300E6215A /* CustomControllerViewController.m */,
 			);
 			path = BMRCalc;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				TargetAttributes = {
 					C48D5A2E1B4435CE00878F20 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = B4AKR8WPZG;
 					};
 					C48D5A471B4435CF00878F20 = {
 						CreatedOnToolsVersion = 6.4;
@@ -224,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C409D4B01B45BCA300E6215A /* CustomControllerViewController.m in Sources */,
 				C48D5A5A1B4435F200878F20 /* Subject.m in Sources */,
 				C48D5A3B1B4435CE00878F20 /* ViewController.m in Sources */,
 				C48D5A381B4435CE00878F20 /* AppDelegate.m in Sources */,
@@ -355,9 +362,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BMRCalc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -365,9 +375,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BMRCalc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -424,6 +437,7 @@
 				C48D5A541B4435CF00878F20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C48D5A551B4435CF00878F20 /* Build configuration list for PBXNativeTarget "BMRCalcTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +446,7 @@
 				C48D5A571B4435CF00878F20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
