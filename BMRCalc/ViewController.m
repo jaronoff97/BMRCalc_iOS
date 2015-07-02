@@ -65,7 +65,7 @@ NSNumber* kilogramsToPounds(NSNumber* kilograms){
         weightNumber = poundsToKilograms([NSNumber numberWithFloat: self.weightField.text.floatValue]);
     }
     else{
-       heightNumber = ([NSNumber numberWithFloat: (self.heightField.text.floatValue*100)]);//convert meters to centimeters
+       heightNumber = ([NSNumber numberWithFloat: (self.heightField.text.floatValue)]);//convert meters to centimeters
        weightNumber = ([NSNumber numberWithFloat: self.weightField.text.floatValue]);
     }
     
@@ -99,11 +99,25 @@ NSNumber* kilogramsToPounds(NSNumber* kilograms){
         isImperial=YES;
         self.weightField.placeholder=@"Weight (lbs)";
         self.heightField.placeholder=@"Height (in)";
+        if(self.weightField.text!=0){
+            self.weightField.text = [NSString stringWithFormat: @"%@",(kilogramsToPounds([NSNumber numberWithFloat:self.weightField.text.floatValue]))];
+        }
+        if(self.heightField.text!=0){
+            self.heightField.text = [NSString stringWithFormat: @"%@",(centimetersToInches([NSNumber numberWithFloat:self.heightField.text.floatValue]))];
+        }
+        
     }
     else if(isImperial==YES){
         isImperial=NO;
         self.weightField.placeholder=@"Weight (kg)";
-        self.heightField.placeholder=@"Height (m)";
+        self.heightField.placeholder=@"Height (cm)";
+        if(self.weightField.text!=0){
+            self.weightField.text = [NSString stringWithFormat: @"%@",(poundsToKilograms([NSNumber numberWithFloat:self.weightField.text.floatValue]))];
+        }
+        if(self.heightField.text!=0){
+            self.heightField.text = [NSString stringWithFormat: @"%@",(inchesToCentimeters([NSNumber numberWithFloat:(self.heightField.text.floatValue)]))];
+        }
+        
     }
 }
 
