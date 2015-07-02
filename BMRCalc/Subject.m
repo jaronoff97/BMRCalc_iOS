@@ -26,7 +26,7 @@ static Subject* _mySecretSubject; // make a static subject that all classes will
 
 -(NSNumber*) bmr
 {
-    float heightInMeters = self.heightInCentimeters.floatValue / 100.0;
+    float heightInCMeters = self.heightInCentimeters.floatValue;
     float weight = self.weightInKilograms.floatValue;
     float floatAge = self.age.floatValue;
     float _bmr; // construct a bmr float
@@ -34,16 +34,16 @@ static Subject* _mySecretSubject; // make a static subject that all classes will
     if(self.isMale==YES)
     {
         float part1 = ((13.397*weight));//break up the parts in to three to make
-        float part2 = ((4.799*heightInMeters)/(.01));// the calculation easier to read
+        float part2 = ((4.799*heightInCMeters));// the calculation easier to read
         float part3 = ((5.677*floatAge));
-        _bmr=part1+part2+part3+88.362; // <<<THIS IS THE MALE CONDITION
+        _bmr=part1+part2-part3+88.362; // <<<THIS IS THE MALE CONDITION
     }
     else if(self.isMale==NO)
     {
         float part1 = ((9.247*weight));
-        float part2 = ((3.098*heightInMeters)/(.01));
+        float part2 = ((3.098*heightInCMeters));
         float part3 = ((4.33*floatAge));
-        _bmr=part1+part2+part3+447.593; // <<<THIS IS THE FEMALE CONDITION
+        _bmr=part1+part2-part3+447.593; // <<<THIS IS THE FEMALE CONDITION
     }
   return [NSNumber numberWithFloat: _bmr]; // return the BMR
 }
